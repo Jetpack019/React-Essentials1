@@ -1,0 +1,121 @@
+
+{/* <CoreConcept 
+title={CORE_CONCEPTS[0].title}
+description={CORE_CONCEPTS[0].description}
+image={CORE_CONCEPTS[0].image}
+/>
+<CoreConcept {...CORE_CONCEPTS[1]} />
+<CoreConcept {...CORE_CONCEPTS[2]} />
+<CoreConcept {...CORE_CONCEPTS[3]} /> */}
+
+
+
+forwarding Wrap to ...props
+
+
+function Section({title,children, ...props}) { - here is the class and id
+  return (
+    <section {...props}>
+        <h2>{title}</h2>
+        {children}
+    </section>
+  )
+}
+
+export default Section
+
+import React from 'react'
+
+function TabButton({children, isSelected, ...props}) { -- onSelect and onClick={onSelect}
+  return (
+    <li>
+        <button className={isSelected ? 'active' : undefined} {props}>{children}</button>
+    </li>
+  )
+}
+
+export default TabButton
+
+    <menu>
+      <TabButton isSelected={selectedTopic === 'çomponents'} onSelect={() => handleSelect('components')}>Components</TabButton>
+      <TabButton isSelected={selectedTopic === 'jsx'} onSelect={() => handleSelect('jsx')}>JSX</TabButton>
+      <TabButton isSelected={selectedTopic === 'props'} onSelect={() => handleSelect('props')}>Props</TabButton>
+      <TabButton isSelected={selectedTopic === 'state'} onSelect={() => handleSelect('state')}>State</TabButton>
+    </menu>
+
+
+
+
+-This dynamically rendered the tags like menu header or any 
+function Tabs({children,buttons,buttonsContainer}) {
+  const ButtonsContainer  = buttonsContainer;
+
+  return (
+    <>
+        <ButtonsContainer> -- this can be a menu to bottom example just see the buttonsContainer
+            {buttons}
+        </ButtonsContainer>
+        {children}
+    </>
+  )
+}
+
+export default Tabs
+
+
+-   return (
+    <Section title="Examples" id='examples'>
+    <Tabs buttonsContainer="menu" buttons={
+        <>
+            <TabButton isSelected={selectedTopic === 'çomponents'} onClick={() => handleSelect('components')}>Components</TabButton>
+            <TabButton isSelected={selectedTopic === 'jsx'} onClick={() => handleSelect('jsx')}>JSX</TabButton>
+            <TabButton isSelected={selectedTopic === 'props'} onClick={() => handleSelect('props')}>Props</TabButton>
+            <TabButton isSelected={selectedTopic === 'state'} onClick={() => handleSelect('state')}>State</TabButton>
+        </>
+    }
+    >{tabContent}</Tabs>
+ 
+  </Section>
+  
+  )
+
+
+
+
+------------------------------
+  return (
+    <Section title="Examples" id='examples'>
+    <Tabs buttonsContainer="menu" buttons={
+        <>
+            <TabButton isSelected={selectedTopic === 'çomponents'} onClick={() => handleSelect('components')}>Components</TabButton>
+            <TabButton isSelected={selectedTopic === 'jsx'} onClick={() => handleSelect('jsx')}>JSX</TabButton>
+            <TabButton isSelected={selectedTopic === 'props'} onClick={() => handleSelect('props')}>Props</TabButton>
+            <TabButton isSelected={selectedTopic === 'state'} onClick={() => handleSelect('state')}>State</TabButton>
+        </>
+    }
+    >{tabContent}</Tabs>
+ 
+  </Section>
+  
+  )
+
+
+import React from 'react'
+
+function Tabs({children,buttons,buttonsContainer = 'menu'}) {
+  const ButtonsContainer  = buttonsContainer;
+
+  return (
+    <>
+        <ButtonsContainer>
+            {buttons}
+        </ButtonsContainer>
+        {children}
+    </>
+  )
+}
+
+export default Tabs
+
+
+------------------------------
